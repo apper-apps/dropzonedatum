@@ -1,4 +1,5 @@
 import mockFiles from '../mockData/files.json'
+import { analyticsService } from './analyticsService'
 
 let files = [...mockFiles]
 
@@ -26,9 +27,17 @@ export const fileService = {
       uploadedAt: new Date().toISOString(),
       status: 'completed',
       progress: 100,
-      url: fileData.url || `https://picsum.photos/400/300?random=${Date.now()}`
+url: fileData.url || `https://picsum.photos/400/300?random=${Date.now()}`
     }
     files.push(newFile)
+    
+    // Record upload for analytics
+    try {
+      await analyticsService.recordUpload(newFile)
+    } catch (err) {
+      console.warn('Failed to record upload analytics:', err)
+    }
+    
     return { ...newFile }
   },
 

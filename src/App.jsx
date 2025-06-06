@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import { useState, useEffect } from 'react'
 import HomePage from '@/components/pages/HomePage'
+import DashboardPage from '@/components/pages/DashboardPage'
 import NotFound from './pages/NotFound'
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -27,8 +28,9 @@ function App() {
         ? 'bg-surface-900 text-white' 
         : 'bg-surface-50 text-surface-900'
     }`}>
-      <Routes>
-<Route path="/" element={<HomePage darkMode={darkMode} toggleDarkMode={toggleDarkMode} />} />
+<Routes>
+        <Route path="/" element={<HomePage darkMode={darkMode} toggleDarkMode={toggleDarkMode} />} />
+        <Route path="/dashboard" element={<DashboardPage darkMode={darkMode} toggleDarkMode={toggleDarkMode} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       

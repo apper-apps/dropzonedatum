@@ -1,3 +1,4 @@
-import { fileService } from './api/fileService'
+export { fileService } from './api/fileService'
+export { analyticsService } from './api/analyticsService'
 
-export { fileService }
+// Export all services from here for easy imports
